@@ -14,8 +14,7 @@ std::filesystem::path GetExecutablePath() {
 #ifdef _WIN32
     wchar_t pathBuf[MAX_PATH];
     if (!GetModuleFileNameW(nullptr, pathBuf, MAX_PATH)) {
-        printf("Cannot get path executable (%d)\n", GetLastError());
-        exit(-1);
+        throw std::runtime_error("Failed to get executable path");
     }
     return std::filesystem::path(pathBuf);
 #elif __linux__
