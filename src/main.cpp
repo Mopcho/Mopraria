@@ -1,9 +1,8 @@
 #include <iostream>
 #include <raylib.h>
 #include <iostream>
-#include "BlackStone.hpp"
-#include "types.hpp"
 #include "Textures.hpp"
+#include "Block.hpp"
 
 int screenWidth;
 int screenHeight;
@@ -15,7 +14,8 @@ int main() {
     InitWindow(800, 600, "Mopraria"); // temporary size
     MaximizeWindow();
 
-    Textures::instance().load();
+    Textures& textures_instance = Textures::instance();
+    textures_instance.load();
 
     int currentMonitor = GetCurrentMonitor();
     screenWidth = GetScreenWidth();
@@ -29,10 +29,10 @@ int main() {
             if (IsWindowResized()) {
                 onWindowResized();
             }
-            BlockType block = GetBlackStone(Vector2{0, 0});
-            BlockType block2 = GetBlackStone(Vector2{2, 2});
-            DrawTexturePro(block.texture, block.sourceRec, block.destRec, block.origin, block.rotation, block.color); 
-            DrawTexturePro(block2.texture, block2.sourceRec, block2.destRec, block2.origin, block2.rotation, block2.color); 
+            Block block1{Vector2{0, 0}, textures_instance.black_stone};
+            Block block2{Vector2{2, 2}, textures_instance.black_stone};
+            block1.render();
+            block2.render();
         EndDrawing();
     }
     

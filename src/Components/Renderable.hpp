@@ -1,8 +1,12 @@
 #pragma once
 
 #include <raylib.h>
+#include "Textures.hpp"
 
-struct BlockType {
+class Renderable {
+public:
+    void render();
+
     Texture2D texture;
     Rectangle sourceRec;
     Rectangle destRec;
