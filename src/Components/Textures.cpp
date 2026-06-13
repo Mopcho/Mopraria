@@ -1,6 +1,6 @@
 #include "Textures.hpp"
 #include <iostream>
-#include "constants.hpp"
+#include "Constants.hpp"
 
 void Textures::load() {
     std::filesystem::path black_stone_texture_path = TEXTURES_FOLDER_PATH / "separate/texture_16px_1.png";

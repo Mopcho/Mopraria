@@ -5,7 +5,7 @@ project(Moprarria CXX)
 set(CMAKE_CXX_STANDARD 20)
 find_package(raylib CONFIG REQUIRED)
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Components/Block.cpp src/Components/Textures.cpp src/Components/constants.cpp src/Components/Renderable.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/Components/Block.cpp src/Components/Textures.cpp src/Components/Constants.cpp src/Components/Renderable.cpp)
 target_include_directories(${PROJECT_NAME} PUBLIC src/Components)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
