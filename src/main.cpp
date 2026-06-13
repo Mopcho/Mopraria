@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Textures.hpp"
 #include "Block.hpp"
+#include "Constants.hpp"
 
 int screenWidth;
 int screenHeight;
@@ -29,8 +30,8 @@ int main() {
             if (IsWindowResized()) {
                 onWindowResized();
             }
-            Block block1{Vector2{0, 0}, textures_instance.black_stone};
-            Block block2{Vector2{2, 2}, textures_instance.black_stone};
+            Block block1{Vector2{0, 0}, textures_instance.g_textures[BlockIds::DeepslateBricks]};
+            Block block2{Vector2{2, 2}, textures_instance.g_textures[BlockIds::DeepslateBricks]};
             block1.render();
             block2.render();
         EndDrawing();

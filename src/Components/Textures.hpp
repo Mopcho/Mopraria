@@ -1,5 +1,6 @@
 #pragma once
 #include <raylib.h>
+#include <unordered_map>
 
 struct G_Texture {
     Texture2D texture;
@@ -17,7 +18,8 @@ public:
 
     void load();
 
-    G_Texture black_stone{};
+    std::unordered_map<int, G_Texture> g_textures;
+
     bool all_loaded = false;
 
 private:

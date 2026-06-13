@@ -1,0 +1,13 @@
+{
+    "blocks": [
+        {
+            "id": 0,
+            "name": "Deepslate Bricks",
+            "path": "separate/texture_16px 1.png",
+            "source_x": 0.0,
+            "source_y": 0.0,
+            "width": 16,
+            "height": 16
+        }
+    ]
+}
