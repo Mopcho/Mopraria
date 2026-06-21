@@ -4,19 +4,18 @@
 #include "Textures.hpp"
 #include "Block.hpp"
 #include "Constants.hpp"
+#include "Engine/Window/Window.hpp"
 
 int main() {
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-    InitWindow(800, 600, "Mopraria"); // temporary size
-    MaximizeWindow();
+    ME::SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    ME::InitWindow(800, 600, "Mopraria");
+    ME::MaximizeWindow();
 
     Textures& textures_instance = Textures::instance();
     textures_instance.load();
 
-    int currentMonitor = GetCurrentMonitor();
-
-    SetTargetFPS(60);
-    while (!WindowShouldClose())
+    ME::SetTargetFPS(60);
+    while (!ME::WindowShouldClose())
     {
         BeginDrawing();
             ClearBackground(RAYWHITE);
@@ -27,7 +26,7 @@ int main() {
         EndDrawing();
     }
     
-    CloseWindow();
+    ME::CloseWindow();
 
     return 0;
 }
