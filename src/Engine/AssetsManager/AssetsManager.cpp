@@ -1,9 +1,9 @@
 #include "AssetsManager.hpp"
 #include <iostream>
 
-Texture2D ME::AssetsManager::GetTexture(const std::string& key)
+Texture2D ME::AssetsManager::GetTexture(std::string_view key)
 {
-    return textures.at(key);
+    return textures.at(key.data());
 }
 
 void ME::AssetsManager::LoadTexture(std::string key, std::string_view path)

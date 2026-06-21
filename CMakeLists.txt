@@ -15,8 +15,10 @@ add_executable(${PROJECT_NAME}
         src/Engine/Window/Window.cpp
         src/Engine/Scene/Scene.cpp
         src/Engine/Components/Transform/Transform.cpp
+        src/Engine/Components/Sprite/Sprite.cpp
         src/Engine/AssetsManager/AssetsManager.cpp
         src/Engine/Camera/Camera.cpp
+        src/Engine/Entity/Entity.cpp
     )
 target_include_directories(${PROJECT_NAME} PUBLIC src/Components src/Game src/Engine)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib nlohmann_json::nlohmann_json)

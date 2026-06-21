@@ -5,7 +5,7 @@
 namespace ME {
     class AssetsManager {
     public:
-        Texture2D GetTexture(const std::string& key);
+        Texture2D GetTexture(std::string_view key);
         void LoadTexture(std::string key, std::string_view path);
     private:
         std::unordered_map<std::string, Texture2D> textures;

@@ -6,17 +6,37 @@
 #include "Constants.hpp"
 #include "Engine/Window/Window.hpp"
 #include "Engine/Scene/Scene.hpp"
+#include "Engine/Entity/Entity.hpp"
+#include "Engine/AssetsManager/AssetsManager.hpp"
 
-class MenuScene : public ME::Scene {
+class GameScene : public ME::Scene {
 public:
-    MenuScene() {}
+    GameScene() {
+        block.transform.width = 100.0f;
+        block.transform.height = 100.0f;
+        block.transform.position.x = 100.0f;
+        assets.LoadTexture("block", (TEXTURES_FOLDER_PATH / "separate/texture_16px 1.png").string());
+        block.sprite.texture = assets.GetTexture("block");
+        block.sprite.sourceRectangle = Rectangle{0, 0, (float)block.sprite.texture.width, (float)block.sprite.texture.height};
+    }
 
     void Update() {
         std::cout << "Update" << std::endl;
     }
     void Draw() {
         std::cout << "Draw" << std::endl;
+        DrawTexturePro(
+            block.sprite.texture, 
+            block.sprite.sourceRectangle, 
+            Rectangle{block.transform.position.x, block.transform.position.y, block.transform.width, block.transform.height},
+            block.transform.origin,
+            block.transform.rotation,
+            WHITE
+        );
     }
+
+    ME::Entity block = ME::Entity();
+    ME::AssetsManager assets = ME::AssetsManager();
 };
 
 int main() {
@@ -24,10 +44,7 @@ int main() {
     ME::InitWindow(800, 600, "Mopraria");
     ME::MaximizeWindow();
 
-    Textures& textures_instance = Textures::instance();
-    textures_instance.load();
-
-    ME::SceneManager::Instance().SetScene(std::make_unique<MenuScene>());
+    ME::SceneManager::Instance().SetScene(std::make_unique<GameScene>());
 
     ME::SetTargetFPS(60);
     while (!ME::WindowShouldClose())
@@ -37,10 +54,6 @@ int main() {
             scene->Update();
             scene->Draw();
             ClearBackground(RAYWHITE);
-            Block block1{Vector2{0, 0}, textures_instance.g_textures[BlockIds::DeepslateBricks]};
-            Block block2{Vector2{2, 2}, textures_instance.g_textures[BlockIds::DeepslateBricks]};
-            block1.render();
-            block2.render();
         EndDrawing();
     }
     
