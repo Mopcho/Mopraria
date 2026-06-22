@@ -1,6 +1,6 @@
 #pragma once
-#include "Components/Transform/Transform.hpp"
-#include "Components/Sprite/Sprite.hpp"
+#include "Engine/Components/Transform/Transform.hpp"
+#include "Engine/Components/Sprite/Sprite.hpp"
 
 namespace ME {
     class Entity {

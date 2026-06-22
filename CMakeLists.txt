@@ -17,7 +17,7 @@ add_executable(${PROJECT_NAME}
         src/Engine/Camera/Camera.cpp
         src/Engine/Entity/Entity.cpp
     )
-target_include_directories(${PROJECT_NAME} PUBLIC src/Game src/Engine)
+target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib nlohmann_json::nlohmann_json)
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different
