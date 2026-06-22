@@ -1,13 +1,11 @@
 #include <iostream>
 #include <raylib.h>
 #include <iostream>
-#include "Textures.hpp"
-#include "Block.hpp"
-#include "Constants.hpp"
-#include "Engine/Window/Window.hpp"
-#include "Engine/Scene/Scene.hpp"
-#include "Engine/Entity/Entity.hpp"
-#include "Engine/AssetsManager/AssetsManager.hpp"
+#include "Constants/constants.hpp"
+#include "Window/Window.hpp"
+#include "Scene/Scene.hpp"
+#include "Entity/Entity.hpp"
+#include "AssetsManager/AssetsManager.hpp"
 
 class GameScene : public ME::Scene {
 public:
