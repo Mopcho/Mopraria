@@ -8,5 +8,7 @@ namespace ME {
         Entity();
         ME::Transform transform;
         ME::Sprite2D sprite;
+
+        void Draw();
     };
 }

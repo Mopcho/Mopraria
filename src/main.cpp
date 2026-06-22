@@ -21,18 +21,10 @@ public:
     }
 
     void Update() {
-        std::cout << "Update" << std::endl;
+        block.transform.position.x++;
     }
     void Draw() {
-        std::cout << "Draw" << std::endl;
-        DrawTexturePro(
-            block.sprite.texture, 
-            block.sprite.sourceRectangle, 
-            Rectangle{block.transform.position.x, block.transform.position.y, block.transform.width, block.transform.height},
-            block.transform.origin,
-            block.transform.rotation,
-            WHITE
-        );
+        block.Draw();
     }
 
     ME::Entity block = ME::Entity();
