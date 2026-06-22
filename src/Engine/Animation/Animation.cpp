@@ -17,9 +17,7 @@ void ME::Animation::Play()
     m_elapsedTime = 0.0f;
 
     // Setup first frame
-    float new_x = offset_x + width;
-    float new_y = offset_y;
-    m_sprite->sourceRectangle = Rectangle{ new_x, new_y, width, height };
+    m_sprite->sourceRectangle = Rectangle{ CalculateX(), CalculateY(), m_sprite->sourceRectangle.width, m_sprite->sourceRectangle.height };
 }
 
 void ME::Animation::Stop()
@@ -41,9 +39,7 @@ void ME::Animation::Update(float delta_time)
         return;
     }
 
-    float new_x = offset_x + ( current_frame * width );
-    float new_y = offset_y;
-    m_sprite->sourceRectangle = Rectangle{ new_x, new_y, width, height };
+    m_sprite->sourceRectangle = Rectangle{ CalculateX(), CalculateY(), m_sprite->sourceRectangle.width, m_sprite->sourceRectangle.height };
     current_frame++;
     m_elapsedTime = 0.0f;
     if (current_frame >= frames) {
@@ -53,4 +49,14 @@ void ME::Animation::Update(float delta_time)
             Play();
         }
     }
+}
+
+float ME::Animation::CalculateX()
+{
+    return offset_x + ( current_frame * m_sprite->sourceRectangle.width );
+}
+
+float ME::Animation::CalculateY()
+{
+    return offset_y;
 }
