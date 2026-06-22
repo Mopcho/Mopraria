@@ -1,32 +1,43 @@
-#include <iostream>
 #include "Constants/constants.hpp"
 #include "Engine/Window/Window.hpp"
 #include "Engine/Scene/Scene.hpp"
 #include "Engine/Entity/Entity.hpp"
 #include "Engine/AssetsManager/AssetsManager.hpp"
 #include <Engine/Engine/Engine.hpp>
+#include <Engine/Animation/Animation.hpp>
 
 class GameScene : public ME::Scene {
 public:
     GameScene() {
-        block.transform.width = 100.0f;
-        block.transform.height = 100.0f;
-        block.transform.position.x = 100.0f;
-        assets.LoadTexture("block", (TEXTURES_FOLDER_PATH / "separate/texture_16px 1.png").string());
-        block.sprite.texture = assets.GetTexture("block");
-        block.sprite.sourceRectangle = Rectangle{0, 0, (float)block.sprite.texture.width, (float)block.sprite.texture.height};
+        player.transform->width = 200.0f;
+        player.transform->height = 200.0f;
+        player.transform->position.x = 100.0f;
+        assets.LoadTexture("player", (TEXTURES_FOLDER_PATH / "Characters/16x16 Idle-Sheet.png").string());
+        player.sprite->texture = assets.GetTexture("player");
+        player.sprite->sourceRectangle = Rectangle{0, 0, (float)player.sprite->texture.width, (float)player.sprite->texture.height};
+
+        animation.SetSprite(player.sprite);
+        animation.frames = 4;
+        animation.height = 24;
+        animation.width = 24;
+        animation.repeat = true;
+        animation.animation_speed = 0.3f;
+        animation.offset_y = 24;
+        animation.Play();
     }
 
     void Update() {
-        block.transform.position.x++;
+        player.transform->position.x += 10.0f * ME::GetDeltaTime();
+        animation.Update(ME::GetDeltaTime());
     }
 
     void Draw() {
-        block.Draw();
+        player.Draw();
     }
 
-    ME::Entity block = ME::Entity();
+    ME::Entity player = ME::Entity();
     ME::AssetsManager assets = ME::AssetsManager();
+    ME::Animation animation = ME::Animation();
 };
 
 int main() {

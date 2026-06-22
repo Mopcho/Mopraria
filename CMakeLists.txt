@@ -17,6 +17,7 @@ add_executable(${PROJECT_NAME}
         src/Engine/Camera/Camera.cpp
         src/Engine/Entity/Entity.cpp
         src/Engine/Engine/Engine.cpp
+        src/Engine/Animation/Animation.cpp
     )
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib nlohmann_json::nlohmann_json)
