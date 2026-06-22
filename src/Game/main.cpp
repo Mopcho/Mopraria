@@ -1,11 +1,10 @@
 #include <iostream>
-#include <raylib.h>
-#include <iostream>
 #include "Constants/constants.hpp"
 #include "Engine/Window/Window.hpp"
 #include "Engine/Scene/Scene.hpp"
 #include "Engine/Entity/Entity.hpp"
 #include "Engine/AssetsManager/AssetsManager.hpp"
+#include <Engine/Engine/Engine.hpp>
 
 class GameScene : public ME::Scene {
 public:
@@ -21,6 +20,7 @@ public:
     void Update() {
         block.transform.position.x++;
     }
+
     void Draw() {
         block.Draw();
     }
@@ -37,15 +37,10 @@ int main() {
     ME::SceneManager::Instance().SetScene(std::make_unique<GameScene>());
 
     ME::SetTargetFPS(60);
-    while (!ME::WindowShouldClose())
-    {
-        BeginDrawing();
-            ME::Scene* scene = ME::SceneManager::Instance().GetScene();
-            scene->Update();
-            scene->Draw();
-            ClearBackground(RAYWHITE);
-        EndDrawing();
-    }
+    ME::Engine engine;
+
+    // Start game loop
+    engine.Start();
     
     ME::CloseWindow();
 
