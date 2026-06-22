@@ -7,4 +7,6 @@ namespace ME {
     public:
         void Start();
     };
+
+    float GetDeltaTime();
 }

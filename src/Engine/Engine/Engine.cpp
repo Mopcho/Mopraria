@@ -13,3 +13,8 @@ void ME::Engine::Start()
         EndDrawing();
     }
 }
+
+float ME::GetDeltaTime()
+{
+    return ::GetFrameTime();
+}
